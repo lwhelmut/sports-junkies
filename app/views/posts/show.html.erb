@@ -1,0 +1,42 @@
+<div class="card mb-3">
+  <div class="card-header">
+    <%= link_to @post.user.name, user_path(@post.user.id, method: :get) %>
+  </div>
+  <%=link_to image_tag(@post.image, class: "card-img-top"), post_path(@post.id) %>
+  <div class="card-body">
+    <h5 class="card-title"><%= @post.title%></h5>
+    <p class="card-text"><%= @post.concept%></p>
+    <% if @post.tag_list.any? %>
+      <% @post.tags.each do |tag| %>
+        <%= link_to posts_path(tag: tag.name) do %>
+          <div class="badge badge badge-info"><%= "#{tag.name}(#{tag.taggings_count})" %></div>
+        <% end %>
+      <% end %>
+    <% end %>
+    <% if user_signed_in? && current_user.id == @post.user_id %>
+      <%= link_to 'Edit', edit_post_path(@post.id), class: 'btn btn-primary mr-3' %>
+      <%= link_to 'Delete', post_path(@post), method: :delete, remote: true, data: {confirm: "You sure want to delete #{@post.title}？"}, class: 'btn btn-danger delete'%>
+    <% end %>
+    <div class="post__comments">
+      <% if user_signed_in? %>
+        <%= form_with model: [@post, @comment], local: true do |f|%>
+          <div class="comment-box">
+            <%= f.label :text, "Comment" %><br />
+            <%= f.text_field :text %>
+          </div>
+          <div class="actions">
+            <%= f.submit "Send", class: "btn btn-primary"  %>
+          </div>
+        <% end %> 
+      <% end %>
+      <ul class="comments_lists">
+        <% @comments.each do |comment| %>
+          <li class="comments_list" >
+              <%= comment.text %>
+              <%= link_to comment.user.name, "/users/#{comment.user.id}", class: :comment_user %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

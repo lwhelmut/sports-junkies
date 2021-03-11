@@ -1,0 +1,48 @@
+<div class="container">
+  <%= form_with(model: @post, local: true) do |form| %>
+    <%# ヘッダー %>
+    <nav class="navbar navbar-light bg-light">
+      <span class="navbar-brand mb-0 h1">Edit Blog</span>
+    </nav>
+    <%# /ヘッダー%>
+
+    <%# <%= render "shared/error_messages", resource: @post %> 
+    
+    <%# タイトル %>
+    <div class="field">
+      <%= form.label :title %>
+      <%= form.text_field :title, class:"form-control", id: 'title'%>
+    </div>
+    <%# /タイトル %>
+
+    <%# 内容%>
+    <div class="field">
+      <%= form.label :concept %>
+      <%= form.text_area :concept, class:"form-control", id: 'concept'%>
+    </div>
+    <%# /内容 %>
+
+    <%# 画像%>
+    <div class="form-group">
+      <%= form.label :image %>
+      <%= form.file_field :image, class: "form-control-file", id: 'image' %>
+    </div>
+    <%# /画像%>
+
+    <%# タグ%>
+    <div class="form-group">
+      <%= form.label :tag_list %>
+      <div class="input-form">
+        <%= form.text_field :tag_list, value: @post.tag_list.join(','), class: "ui-widget-content ui-autocomplete-input", name: "post[tag_list]", id: "post_tag_list", placeholder: "You can add 10 more tags"  %>
+      </div>
+    </div>
+    <%# /タグ%>
+
+    <%# 下部ボタン %>
+    <div class="sell-btn-contents">
+      <%= form.submit "Save", class:"btn btn-primary" %>
+    </div>
+    <%# /下部ボタン %>
+
+  <% end %>
+</div>
