@@ -12,7 +12,7 @@
     <!-- 真ん中 -->
     <div class="col-lg-8">
       <% @posts.each do |post| %>
-        <div class="col-auto">
+        <div class="col-auto mb-3">
           <div class="card" style="width: 18rem;">
             <div class="card-header">
               <%= link_to post.user.name, user_path(post.user, method: :get) %>
@@ -36,6 +36,7 @@
 
     <div class="col-lg-2">
       <!-- 右ブロック -->
+      <%= link_to 'Go to chat', rooms_path, class: "btn btn-primary"%>
     </div>
   </div>
 </div>
