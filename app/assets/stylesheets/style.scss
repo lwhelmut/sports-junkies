@@ -1,4 +1,5 @@
-body {
+// chat-room
+.container-fluid {
   overflow-y: hidden;
   ::-webkit-scrollbar {
     display: none;
@@ -102,4 +103,162 @@ body {
 .rooms-sidebar {
   border-right: 1px solid #eeeeee;
 }
+
+.activity-status {
+  font-size: 20px;
+  float: left;
+  margin-top: -7px;
+  margin-right: 4px;
+  color: #e0e0e0;
+  &.online {
+    color: #64dd17;
+  }
+}
+
+// chat-room
+
+
+// header(post)
+.btn-circle {
+  display: inline-block;
+  text-decoration: none;
+  color: #FFF;
+  font-weight: 700;
+  background-color: orange;
+  letter-spacing: 1.5px;
+  width: 220px;
+  text-align: center;
+  padding: 24px;
+  position: relative;
+  opacity: 1 !important;
+  transition: all 0.4s;
+  overflow: hidden;
+  border: none;
+  margin-left: 20px;
+  margin-top: 20px;
+}
+.btn-circle:before {
+  content: "";
+  display: block;
+  width: 220px;
+  height: 220px;
+  background-color: #FFF;
+  border-radius: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  transform: translate(-100%, 100%);
+  transition: all 0.4s;
+  pointer-events: none;
+}
+.btn-circle:after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  background-color: #FFF;
+  border-radius: 100%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 18px;
+  transition: all 0.4s;
+}
+.btn-circle:hover {
+  color: orange;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+}
+.btn-circle:hover:after {
+  width: 0;
+  height: 0;
+  border-radius: 0;
+  background-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 6px;
+  border-color: transparent transparent transparent #FFF;
+  right: 12px;
+}
+.btn-circle:hover:before {
+  transform: translate(-12px, 60px);
+}
+.btn-circle span {
+  position: relative;
+  z-index: 99;
+} 
+.btn-surround {
+  display: inline-block;
+  text-decoration: none;
+  color: #FFF;
+  font-weight: 700;
+  background-color: orange;
+  text-align: center;
+  width: inherit;
+  min-width: 250px;
+  padding: 16px 16px;
+  position: relative;
+  opacity: 1 !important;
+  transition: all 0.3s;
+  margin: 30px;
+  &.right {
+    margin-left: 500px;
+  }
+}
+.btn-surround:before,
+.btn-surround:after {
+  content: "";
+  display: block;
+  position: absolute;
+  background-color: orange;
+  top: 0;
+  pointer-events: none;
+}
+.btn-surround:before {
+  left: 0;
+  width: 0;
+  height: 2px;
+}
+.btn-surround:after {
+  right: 0;
+  width: 2px;
+  height: 0;
+}
+.btn-surround:hover {
+  background-color: #FFF;
+  color: orange;
+}
+.btn-surround:hover:before {
+  width: 100%;
+  transition: width 0.2s 0.2s;
+}
+.btn-surround:hover:after {
+  height: 100%;
+  transition: height 0.1s 0.4s;
+}
+.btn-surround:hover span:before {
+  width: 100%;
+  transition: width 0.2s 0.5s;
+}
+.btn-surround:hover span:after {
+  height: 100%;
+  transition: height 0.1s 0.7s;
+}
+.btn-surround span:before,
+.btn-surround span:after {
+  content: "";
+  display: block;
+  position: absolute;
+  background-color: orange;
+  bottom: 0;
+  pointer-events: none;
+}
+.btn-surround span:before {
+  right: 0;
+  width: 0;
+  height: 2px;
+}
+.btn-surround span:after {
+  left: 0;
+  width: 2px;
+  height: 0;
+}
+// header(post)
 

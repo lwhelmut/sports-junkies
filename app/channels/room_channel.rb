@@ -6,4 +6,8 @@ class RoomChannel < ApplicationCable::Channel
   def unsubscribed
     # Any cleanup needed when channel is unsubscribed
   end
+
+  def cookies
+    connection.send(:cookies)
+  end
 end
