@@ -1,13 +1,14 @@
 <div id="room-id" data-room-id="<%= @room.try(:id)%>"></div>
 <div id="user-id" data-user-id="<%= current_user.id%>"></div>
 
-<div class="container-fluid">
+<div class="container-fluid chats">
   <div class="row">
     <div class="col-3 rooms-sidebar">
       <div class="card no-outline">
         <div class="card-body">
           <small>Logged in as</small><br>
           <b><%= current_user.name %><br></b>
+          <%= link_to 'Back to top', root_path, class: "btn btn-primary top" %>
         </div>
       </div>
       <%= render 'form', room: Room.new %>
@@ -19,7 +20,7 @@
             <div class="card-body">
               <span class='name'><%= room.name %></span><br>
               <span class="member-count">
-                <small><%= room.users.uniq.count %> Members</small>
+                <small><%= room.users.distinct.count %> Members</small>
               </span>
             </div>
           </div>
@@ -34,7 +35,7 @@
               <span class="navbar-brand" href="#">
                 <b><%= @room.name %></b>
               </span>
-              <small><%= @room.users.uniq.count %> Members</small>
+              <small><%= @room.users.distinct.count %> Members</small>
             </div>
           </nav>
           <div id="messages">

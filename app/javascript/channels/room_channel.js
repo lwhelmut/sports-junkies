@@ -35,9 +35,13 @@ document.addEventListener('turbolinks: load', () => {
         html = data.theirs
       }
 
-      const messageContainer = document.getElementById('messages')
-      messageContainer.innerHTML = messageContainer.innerHTML + 
-      html
+      const messageContainer = document.getElementById('messages');
+      messageContainer.insertAdjacentHTML('beforeend', data['message']) + 
+      html;
+    },
+
+    speak: function(message) {
+      return this.perform('speak', {message: message});
     }
   });
 })

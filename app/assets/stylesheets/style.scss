@@ -1,10 +1,12 @@
 // chat-room
 .container-fluid {
-  overflow-y: hidden;
+  .chats {
+    overflow-y: hidden;
   ::-webkit-scrollbar {
     display: none;
   }
   -ms-overflow-style: none;
+  }
 }
 
 .chat-room {

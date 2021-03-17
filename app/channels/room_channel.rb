@@ -7,7 +7,12 @@ class RoomChannel < ApplicationCable::Channel
     # Any cleanup needed when channel is unsubscribed
   end
 
-  def cookies
-    connection.send(:cookies)
+  # def cookies
+  #   connection.send(:cookies)
+  # end
+
+  def speak(data)
+    Message.create! 'room_channel', message: data['message'], user_id: current_user.id, room_id: params[:room_id]
   end
+
 end

@@ -1,7 +1,7 @@
 class SendMessageJob < ApplicationJob
   queue_as :default
 
-  def perform(data)
+  def perform(message)
     mine = ApplicationController.render(
       partial: 'messages/mine', 
       locals: {messsage: message}

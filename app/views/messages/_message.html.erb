@@ -1,5 +1,5 @@
 <p id="message-<%= message.id %>">
-  <div class="message mb-2 <%= 'me' if message.user = current_user %>">
+  <div class="message mb-2 <%= 'me' if message.user.id = current_user.id %>">
     <div class="content-container">
       <div class="content">
         <%= message.content %>
