@@ -11,14 +11,20 @@ class PostsController < ApplicationController
   end
 
   def new
-    @post = Post.new
+    @post = current_user.posts.new
+  end
+
+  def edit
+    @element = @post.elements.new
+    unless @post.user.id == current_user.id
+      redirect_to root_path
+    end
   end
 
   def create
-    @post = Post.new(post_params)
-    if @post.valid?
-      @post.save
-      redirect_to root_path
+    @post = current_user.posts.new(post_params)
+    if @post.save
+      redirect_to edit_post_path(@post)
     else
       render :new
     end
@@ -26,19 +32,11 @@ class PostsController < ApplicationController
 
   def show
     @tags = @post.tag_counts_on(:tags)
-    @comment = Comment.new
-    @comments = @post.comments.includes(:user)
-  end
-
-  def edit
-    unless @post.user.id == current_user.id
-      redirect_to root_path
-    end
   end
 
   def update
     if @post.update(post_params)
-      redirect_to root_path
+      redirect_to edit_post_path(@post)
     else
       render :edit
     end
@@ -53,7 +51,7 @@ class PostsController < ApplicationController
   private
 
   def set_post
-    @post = Post.find(params[:id])
+    @post = current_user.posts.find(params[:id])
   end
 
   def post_params

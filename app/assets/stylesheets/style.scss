@@ -1,0 +1,266 @@
+// chat-room
+.container-fluid {
+  .chats {
+    overflow-y: hidden;
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none;
+  }
+}
+
+.chat-room {
+  height: 100vh;
+  overflow-y: scroll;
+
+  #messages {
+    height: 100%;
+    overflow-y: scroll;
+    padding-bottom: 200px;
+  }
+
+  .navbar {
+    border-bottom: 1px solid #eeeeee;
+    margin-left: -15px;
+    width: calc(100% + 30px);
+  }
+  .message {
+    min-height: 59px;
+    .content-container {
+      display: inline-block;
+      .content {
+        background-color: #eeeeee;
+        padding: 8px 16px;
+        border-radius: 20px;
+      }
+      .author {
+        font-size: 0.8rem;
+        color: #777777;
+        margin-left: 10px;
+      }
+    }
+    &.me {
+      .content-container {
+        float: right;
+        .content {
+          background-color: #007bff;
+          color: white;
+        }
+      }
+    }
+  }
+  .chat-box {
+    position: absolute;
+    bottom: -10px;
+    padding: 20px;
+    width: 100% ;
+    margin-left: -15px;
+    background-color: white;
+    border-top: 1px solid #eeeeee;
+    input[type=text] {
+      height: 45px;
+      font-size: 18px;
+      padding: 8px;
+    }
+    .btn {
+      height: 45px;
+    }
+  }
+}
+
+.card.no-outline {
+  border: none;
+}
+
+.room-link {
+  &:hover {
+    text-decoration: none;
+  }
+  .room-card {
+    transition: background-color 0.5s ease;
+    border-radius: 20px;
+    &:hover {
+      background-color: #eeeeee;
+    }
+    &:active {
+      background-color: black;
+      .name {
+        color: white;
+      }
+      .member-count {
+        color: #e0e0e0;
+      }
+    }
+    .name {
+      font-weight: bold;
+      color: black;
+      .member-count {
+        color: #777777;
+        font-weight: light;
+      }
+    }
+  }
+}
+
+.rooms-sidebar {
+  border-right: 1px solid #eeeeee;
+}
+
+.activity-status {
+  font-size: 20px;
+  float: left;
+  margin-top: -7px;
+  margin-right: 4px;
+  color: #e0e0e0;
+  &.online {
+    color: #64dd17;
+  }
+}
+
+// chat-room
+
+
+// header(post)
+.btn-circle {
+  display: inline-block;
+  text-decoration: none;
+  color: #FFF;
+  font-weight: 700;
+  background-color: orange;
+  letter-spacing: 1.5px;
+  width: 220px;
+  text-align: center;
+  padding: 24px;
+  position: relative;
+  opacity: 1 !important;
+  transition: all 0.4s;
+  overflow: hidden;
+  border: none;
+  margin-left: 20px;
+  margin-top: 20px;
+}
+.btn-circle:before {
+  content: "";
+  display: block;
+  width: 220px;
+  height: 220px;
+  background-color: #FFF;
+  border-radius: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  transform: translate(-100%, 100%);
+  transition: all 0.4s;
+  pointer-events: none;
+}
+.btn-circle:after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  background-color: #FFF;
+  border-radius: 100%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 18px;
+  transition: all 0.4s;
+}
+.btn-circle:hover {
+  color: orange;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+}
+.btn-circle:hover:after {
+  width: 0;
+  height: 0;
+  border-radius: 0;
+  background-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 6px;
+  border-color: transparent transparent transparent #FFF;
+  right: 12px;
+}
+.btn-circle:hover:before {
+  transform: translate(-12px, 60px);
+}
+.btn-circle span {
+  position: relative;
+  z-index: 99;
+} 
+.btn-surround {
+  display: inline-block;
+  text-decoration: none;
+  color: #FFF;
+  font-weight: 700;
+  background-color: orange;
+  text-align: center;
+  width: inherit;
+  min-width: 250px;
+  padding: 16px 16px;
+  position: relative;
+  opacity: 1 !important;
+  transition: all 0.3s;
+  margin: 30px;
+  &.right {
+    margin-left: 500px;
+  }
+}
+.btn-surround:before,
+.btn-surround:after {
+  content: "";
+  display: block;
+  position: absolute;
+  background-color: orange;
+  top: 0;
+  pointer-events: none;
+}
+.btn-surround:before {
+  left: 0;
+  width: 0;
+  height: 2px;
+}
+.btn-surround:after {
+  right: 0;
+  width: 2px;
+  height: 0;
+}
+.btn-surround:hover {
+  background-color: #FFF;
+  color: orange;
+}
+.btn-surround:hover:before {
+  width: 100%;
+  transition: width 0.2s 0.2s;
+}
+.btn-surround:hover:after {
+  height: 100%;
+  transition: height 0.1s 0.4s;
+}
+.btn-surround:hover span:before {
+  width: 100%;
+  transition: width 0.2s 0.5s;
+}
+.btn-surround:hover span:after {
+  height: 100%;
+  transition: height 0.1s 0.7s;
+}
+.btn-surround span:before,
+.btn-surround span:after {
+  content: "";
+  display: block;
+  position: absolute;
+  background-color: orange;
+  bottom: 0;
+  pointer-events: none;
+}
+.btn-surround span:before {
+  right: 0;
+  width: 0;
+  height: 2px;
+}
+.btn-surround span:after {
+  left: 0;
+  width: 2px;
+  height: 0;
+}
+// header(post)
+
