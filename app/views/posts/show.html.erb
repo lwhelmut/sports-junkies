@@ -1,42 +1,48 @@
-<div class="card mb-3">
-  <div class="card-header">
-    <%= link_to @post.user.name, user_path(@post.user.id, method: :get) %>
-  </div>
-  <%=link_to image_tag(@post.image, class: "card-img-top"), post_path(@post.id) %>
-  <div class="card-body">
-    <h5 class="card-title"><%= @post.title%></h5>
-    <p class="card-text"><%= @post.concept%></p>
-    <% if @post.tag_list.any? %>
-      <% @post.tags.each do |tag| %>
-        <%= link_to posts_path(tag: tag.name) do %>
-          <div class="badge badge badge-info"><%= "#{tag.name}(#{tag.taggings_count})" %></div>
-        <% end %>
-      <% end %>
-    <% end %>
-    <% if user_signed_in? && current_user.id == @post.user_id %>
-      <%= link_to 'Edit', edit_post_path(@post.id), class: 'btn btn-primary mr-3' %>
-      <%= link_to 'Delete', post_path(@post), method: :delete, remote: true, data: {confirm: "You sure want to delete #{@post.title}？"}, class: 'btn btn-danger delete'%>
-    <% end %>
-    <div class="post__comments">
-      <% if user_signed_in? %>
-        <%= form_with model: [@post, @comment], local: true do |f|%>
-          <div class="comment-box">
-            <%= f.label :text, "Comment" %><br />
-            <%= f.text_field :text %>
-          </div>
-          <div class="actions">
-            <%= f.submit "Send", class: "btn btn-primary"  %>
-          </div>
-        <% end %> 
-      <% end %>
-      <ul class="comments_lists">
-        <% @comments.each do |comment| %>
-          <li class="comments_list" >
-              <%= comment.text %>
-              <%= link_to comment.user.name, "/users/#{comment.user.id}", class: :comment_user %>
-          </li>
-        <% end %>
-      </ul>
+<div class="row">
+  <div class="col-lg-10 offset-lg-1">
+    <div class="card post-card mb-5">
+      <div class="card-body">
+        <div class="pl-5 pr-5 pt-4 pb-4">
+          <h1 class='card-title mb-5'><%= @post.title %></h1>
+            <div class="content-concept mb-5">
+              <%= @post.concept %>
+            </div>
+            <div class="inner-image mb-5">
+              <%= image_tag(@post.image) %>
+            </div>
+            <%# タグ部分 %>
+            <% if @post.tag_list.any? %>
+              <% @post.tags.each do |tag| %>
+                <%= link_to posts_path(tag: tag.name) do %>
+                  <div class="badge badge badge-info"><%= "#{tag.name}(#{tag.taggings_count})" %></div>
+                <% end %>
+              <% end %>
+            <% end %>
+            <%# タグ部分 %>
+            <div class="comment">
+              <% if user_signed_in? %>
+                <%= form_with model: [@post, @comment], local: true do |f|%>
+                  <div class="field mb-3">
+                    <%= f.label :content, "Leave a comment", class: "comment-text font-italic" %>
+                    <%= f.rich_text_area :content %>
+                  </div>
+                  <div class="actions">
+                    <%= f.submit "Submit", class: "btn btn-primary"  %>
+                  </div>
+                <% end %> 
+              <% end %>
+              <ul class="comments-list">
+                <% @comments.each do |comment| %>
+                  <li class="comments" >
+                    <%= comment.content %> by <%= comment.user.name %>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+            <p><%= link_to "Edit", edit_post_path(@post.id), class: "btn btn-primary" %></p>
+        </div>
+      </div>
     </div>
   </div>
 </div>
+

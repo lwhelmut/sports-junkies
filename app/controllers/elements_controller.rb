@@ -3,9 +3,13 @@ class ElementsController < ApplicationController
   before_action :set_element, only: [:update, :destroy ]
 
   def create
-    @element = @post.elements.new(element_params)
+    @element = @post.elements.build(element_params)
 
-    @element.save
+    if @element.save
+      notice = nil
+    else
+      notice = @element.errors.full_messages.join(". ") << '.'
+    end
     redirect_to edit_post_path(@post)
   end
 
@@ -26,7 +30,7 @@ class ElementsController < ApplicationController
   end
 
   def set_element
-    @element = Element.find(params[:id])
+    @element = @post.elements.find(params[:id])
   end
 
   def element_params

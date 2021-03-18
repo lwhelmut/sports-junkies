@@ -61,3 +61,5 @@ gem 'mini_magick'
 gem 'image_processing', '~> 1.2'
 gem 'acts-as-taggable-on', '~> 7.0'
 gem 'jquery-ui-rails'
+
+gem "stimulus_reflex", "~> 3.4"

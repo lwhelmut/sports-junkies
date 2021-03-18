@@ -126,7 +126,7 @@
   text-decoration: none;
   color: #FFF;
   font-weight: 700;
-  background-color: orange;
+  background-color: #007bff;
   letter-spacing: 1.5px;
   width: 220px;
   text-align: center;
@@ -191,7 +191,7 @@
   text-decoration: none;
   color: #FFF;
   font-weight: 700;
-  background-color: orange;
+  background-color: #007bff;
   text-align: center;
   width: inherit;
   min-width: 250px;
@@ -209,7 +209,7 @@
   content: "";
   display: block;
   position: absolute;
-  background-color: orange;
+  background-color: #007bff;
   top: 0;
   pointer-events: none;
 }
@@ -224,8 +224,8 @@
   height: 0;
 }
 .btn-surround:hover {
-  background-color: #FFF;
-  color: orange;
+  background-color: #007bff;
+  color: #007bff;
 }
 .btn-surround:hover:before {
   width: 100%;
@@ -248,7 +248,7 @@
   content: "";
   display: block;
   position: absolute;
-  background-color: orange;
+  background-color: #007bff;
   bottom: 0;
   pointer-events: none;
 }
@@ -264,3 +264,31 @@
 }
 // header(post)
 
+
+
+.post-card {
+  .header-img {
+    width: 100%;
+    height: 120px;
+    background-size: cover;
+    background-position: center;
+  }
+}
+.row {
+  .inner-image {
+    img {
+      max-width: 80%;
+    }
+  }
+  .comment {
+    .comment-text {
+      padding-top: 20px;
+    }
+    .comments-list {
+      list-style: none;
+      .comment-user {
+        list-style: none;
+      }
+    }
+  }
+}

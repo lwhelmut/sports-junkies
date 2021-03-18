@@ -1,51 +1,5 @@
 <div class="container">
-  <%= form_with model: @post, url: posts_path, local: true do |form| %>
-    <%# ヘッダー %>
-    <nav class="navbar navbar-light bg-light">
-      <span class="navbar-brand mb-0 h1">Create New Blog</span>
-    </nav>
-    <%# /ヘッダー%>
-
-    <%# <%= render "shared/error_messages", resource: @post %> 
-    
-    <%# タイトル %>
-    <div class="field">
-      <%= form.label :title %>
-      <%= form.text_field :title, class:"form-control", id: 'title'%>
-    </div>
-    <%# /タイトル %>
-
-    <%# 内容%>
-    <div class="field">
-      <%= form.label :concept %>
-      <%= form.text_area :concept, class:"form-control", id: 'concept'%>
-    </div>
-    <%# /内容 %>
-
-    <%# 画像%>
-    <div class="form-group">
-      <%= form.label :image %>
-      <%= form.file_field :image, class: "form-control-file", id: 'image' %>
-    </div>
-    <%# /画像%>
-
-    <%# タグ%>
-    <div class="form-group">
-      <%= form.label :tag_list %>
-      <div class="input-form">
-        <%= form.text_field :tag_list, value: @post.tag_list.join(','), data: {role: "tagsinput"} %>
-      </div>
-    </div>
-    <%# /タグ%>
-
-    <%# 下部ボタン %>
-    <div class="sell-btn-contents">
-      <%= form.submit "Save", class:"btn btn-primary" %>
-      <%=link_to 'Go Back to Top', root_path, class:"btn btn-primary" %>
-    </div>
-    <%# /下部ボタン %>
-
-  <% end %>
+  <%= render 'form', post: @post %>
 </div>
 
 <%# "tag_form tagit-hidden-field" %>

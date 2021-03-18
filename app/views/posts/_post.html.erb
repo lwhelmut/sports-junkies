@@ -1,38 +1,34 @@
-<!-- 左ブロック -->
-<% if @tags.present? %>
-  <% @tags.each do |tag| %>
-      <%= link_to "#{tag.name}(#{tag.taggings_count})",posts_path(tag: tag.name), class: "badge badge badge-info" %>
-  <% end %>
-<% end %>
-
-<!-- 真ん中 -->
-<div class="col-lg-8">
-  <% @posts.each do |post| %>
-    <div class="col-auto mb-3">
-      <div class="card" style="width: 18rem;">
-        <div class="card-header">
-          <%= link_to post.user.name, user_path(post.user, method: :get) %>
-        </div>
-        <%=link_to image_tag(post.image, class: "bd-placeholder-img card-img-top"), post_path(post.id) %>
-        <div class="card-body">
-          <h5 class="card-title"><%= post.title%></h5>
-          <%# タグの部分 %>
-          <% if post.tag_list.any? %>
-            <% post.tags.each do |tag| %>
-              <%= link_to posts_path(tag: tag.name) do %>
-                <div class="badge badge badge-info"><%= "#{tag.name}(#{tag.taggings_count})" %></div>
+<% @posts.each do |post| %>
+  <%= link_to post_path(post) do %>  
+    <div class="card mb-3 post-card">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-2">
+            <%=  image_tag(post.image, class: "header-img", style: "background-image") %>
+          </div>
+          <div class="col-md-10">
+            <h5 class='card-title mb-2 text-dark'><%= post.title %></h5>
+            <p class="text-secondary mb-0"><%= post.concept %></p>
+              <%# タグの部分 %>
+              <% if post.tag_list.any? %>
+                <% post.tags.each do |tag| %>
+                  <%= link_to posts_path(tag: tag.name) do %>
+                    <div class="badge badge badge-info"><%= "#{tag.name}(#{tag.taggings_count})" %></div>
+                  <% end %>
+                <% end %>
               <% end %>
-            <% end %>
-          <% end %>
-          <%# /タグの部分 %>
-          <%= link_to 'Details', post_path(post.id), method: :get, class: "btn btn-warning" %>
+              <%# /タグの部分 %>
+              <%= post.user.name %>
+          </div>
         </div>
       </div>
     </div>
   <% end %>
-</div>
+<% end %>
 
-<div class="col-lg-2">
+
   <!-- 右ブロック -->
-  <%= link_to 'Go to chat', rooms_path, class: "btn btn-primary"%>
-</div>
+<%= link_to 'Go to chat', rooms_path, class: "btn btn-primary"%>
+
+<%# userの詳細ページ %>
+<%# <%= post.user.name, user_path(post.user, method: :get) %>
