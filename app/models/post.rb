@@ -5,7 +5,7 @@ class Post < ApplicationRecord
   has_rich_text :concept
   has_many :comments
 
-  acts_as_ordered_taggable
+  acts_as_taggable
   
   with_options presence: true do
     validates :title

@@ -1,34 +1,46 @@
-<% @posts.each do |post| %>
-  <%= link_to post_path(post) do %>  
-    <div class="card mb-3 post-card">
-      <div class="card-body">
-        <div class="row">
-          <div class="col-md-2">
-            <%=  image_tag(post.image, class: "header-img", style: "background-image") %>
-          </div>
-          <div class="col-md-10">
-            <h5 class='card-title mb-2 text-dark'><%= post.title %></h5>
-            <p class="text-secondary mb-0"><%= post.concept %></p>
-              <%# タグの部分 %>
-              <% if post.tag_list.any? %>
-                <% post.tags.each do |tag| %>
-                  <%= link_to posts_path(tag: tag.name) do %>
-                    <div class="badge badge badge-info"><%= "#{tag.name}(#{tag.taggings_count})" %></div>
+<div class="row">
+  <div class="col-md-1">
+    <h2 class="text-secondary">
+      <i class="fas fa-tags fa-3x"></i>
+    </h2>
+    <% @tags.each do |tag| %>
+      <%= link_to posts_path(tag: tag.name) do %>
+        <div class="badge badge badge-info tag"><%= tag.name %></div>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="col-md-10">
+    <% @posts.each do |post| %>
+      <div class="card mb-3 post-card">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-2">
+              <%=  image_tag(post.image, class: "header-img", style: "background-image") %>
+            </div>
+            <div class="col-md-10">
+              <h5 class='card-title mb-2 text-dark'><%= post.title %></h5>
+              <p class="text-secondary mb-0"><%= post.concept %></p>
+                <%# タグの部分 %>
+                <% if post.tag_list.any? %>
+                  <% post.tags.each do |tag| %>
+                    <%= link_to posts_path(tag: tag.name) do %>
+                      <div class="badge badge badge-info tag"><%= tag.name %></div>
+                    <% end %>
                   <% end %>
                 <% end %>
-              <% end %>
-              <%# /タグの部分 %>
-              <%= post.user.name %>
+                <%# /タグの部分 %>
+                <%= link_to 'More Details', post_path(post), class: "btn btn-primary detail" %>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  <% end %>
-<% end %>
-
-
-  <!-- 右ブロック -->
-<%= link_to 'Go to chat', rooms_path, class: "btn btn-primary"%>
-
-<%# userの詳細ページ %>
-<%# <%= post.user.name, user_path(post.user, method: :get) %>
+    <% end %>
+  </div>
+  <div class="col-md-1">
+    <% if user_signed_in? %>
+      <%= link_to rooms_path do %>
+        <i class="fab fa-teamspeak fa-7x size"></i>
+      <% end %>
+    <% end %>
+  </div>
+</div>

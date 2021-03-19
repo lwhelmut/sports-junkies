@@ -121,12 +121,13 @@
 
 
 // header(post)
+
 .btn-circle {
   display: inline-block;
   text-decoration: none;
   color: #FFF;
   font-weight: 700;
-  background-color: #007bff;
+  background-color: #99CCFF;
   letter-spacing: 1.5px;
   width: 220px;
   text-align: center;
@@ -166,7 +167,7 @@
   transition: all 0.4s;
 }
 .btn-circle:hover {
-  color: orange;
+  color: #99CCFF;
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
 }
 .btn-circle:hover:after {
@@ -191,7 +192,7 @@
   text-decoration: none;
   color: #FFF;
   font-weight: 700;
-  background-color: #007bff;
+  background-color: #99CCFF;
   text-align: center;
   width: inherit;
   min-width: 250px;
@@ -199,9 +200,10 @@
   position: relative;
   opacity: 1 !important;
   transition: all 0.3s;
-  margin: 30px;
+  margin-top: 30px;
+  margin-left: 30px;
   &.right {
-    margin-left: 500px;
+    margin-left: 300px;
   }
 }
 .btn-surround:before,
@@ -209,7 +211,7 @@
   content: "";
   display: block;
   position: absolute;
-  background-color: #007bff;
+  background-color: #99CCFF;
   top: 0;
   pointer-events: none;
 }
@@ -224,8 +226,8 @@
   height: 0;
 }
 .btn-surround:hover {
-  background-color: #007bff;
-  color: #007bff;
+  background-color: #FFF;
+  color: #000066
 }
 .btn-surround:hover:before {
   width: 100%;
@@ -248,7 +250,7 @@
   content: "";
   display: block;
   position: absolute;
-  background-color: #007bff;
+  background-color: #99CCFF;
   bottom: 0;
   pointer-events: none;
 }
@@ -275,10 +277,21 @@
   }
 }
 .row {
+  position: relative;
   .inner-image {
+    pointer-events: none;
     img {
       max-width: 80%;
     }
+  }
+  .text-secondary {
+    pointer-events: none;
+  }
+  .detail {
+    position: absolute;
+    right: 0;
+    bottom: -10px;
+    color: white;
   }
   .comment {
     .comment-text {
@@ -288,7 +301,22 @@
       list-style: none;
       .comment-user {
         list-style: none;
+        font-size: 0.7rem;
       }
+      .size2 {
+        color: #99CCFF;
+        margin-left: -20px;
+        margin-top: 10px;
+      }
+    }
+  }
+  .tag {
+    pointer-events: none;
+  }
+  .size {
+    color: #99CCFF;
+    &:hover {
+      color: #000066;
     }
   }
 }

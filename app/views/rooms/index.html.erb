@@ -28,26 +28,24 @@
       <% end %>
     </div>
     <div class="col-9">
-      <%# <% if @room.present? %>
-        <div class="chat-room">
-          <nav class="navbar navbar-light">
-            <div class="container-fluid">
-              <span class="navbar-brand" href="#">
-                <b><%= @room.name %></b>
-              </span>
-              <small><%= @room.users.distinct.count %> Members</small>
-            </div>
-          </nav>
-          <div id="messages">
-            <% @room.messages.each do |message| %>
-              <%= render 'messages/message', message: message %>
-            <% end %>
+      <div class="chat-room">
+        <nav class="navbar navbar-light">
+          <div class="container-fluid">
+            <span class="navbar-brand" href="#">
+              <b><%= @room.name %></b>
+            </span>
+            <small><%= @room.users.distinct.count %> Members</small>
           </div>
-          <div class="chat-box">
-            <%= render 'messages/form', message: Message.new %>
-          </div>
+        </nav>
+        <div id="messages">
+          <% @room.messages.each do |message| %>
+            <%= render 'messages/message', message: message %>
+          <% end %>
         </div>
-      <%# <% end %>
+        <div class="chat-box">
+          <%= render 'messages/form', message: Message.new %>
+        </div>
+      </div>
     </div>
   </div>
 </div>

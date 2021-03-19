@@ -6,12 +6,12 @@ class PostsController < ApplicationController
     @posts = Post.all
     @tags = Post.tag_counts_on(:tags).most_used(20)
     if @tag = params[:tag]
-      @post = Post.tagged_with(params[:tag])
+      @posts = Post.tagged_with(params[:tag])
     end
   end
 
   def new
-    @post = current_user.posts.build
+    @post = Post.new
   end
 
   def edit
@@ -21,10 +21,10 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = current_user.post.build(post_params)
+    @post = Post.new(post_params)
     if @post.valid?
       @post.save
-      redirect_to edit_post_path(@post)
+      redirect_to root_path
     else
       render :new
     end

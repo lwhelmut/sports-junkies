@@ -14,8 +14,8 @@
             <% if @post.tag_list.any? %>
               <% @post.tags.each do |tag| %>
                 <%= link_to posts_path(tag: tag.name) do %>
-                  <div class="badge badge badge-info"><%= "#{tag.name}(#{tag.taggings_count})" %></div>
-                <% end %>
+                  <div class="badge badge badge-info"><%= tag.name %></div>
+                <% end %> 
               <% end %>
             <% end %>
             <%# タグ部分 %>
@@ -32,9 +32,10 @@
                 <% end %> 
               <% end %>
               <ul class="comments-list">
+                <i class="fas fa-comment fa-2x size2"></i>
                 <% @comments.each do |comment| %>
                   <li class="comments" >
-                    <%= comment.content %> by <%= comment.user.name %>
+                    <%= comment.content %>
                   </li>
                 <% end %>
               </ul>
