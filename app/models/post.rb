@@ -1,7 +1,6 @@
 class Post < ApplicationRecord
   belongs_to :user
   has_one_attached :image
-  has_many :elements
   has_rich_text :concept
   has_many :comments
 
@@ -10,14 +9,7 @@ class Post < ApplicationRecord
   with_options presence: true do
     validates :title
     validates :concept
-    validates :image
   end
+  validates_length_of :concept, within: 50..300
 
-  scope :published, -> do
-    where(published: true)
-  end
-
-  scope :most_recently_published, -> do
-    order(published_at: :desc)
-  end
 end

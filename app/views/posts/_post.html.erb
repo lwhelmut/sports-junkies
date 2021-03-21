@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-md-1">
     <h2 class="text-secondary">
-      <i class="fas fa-tags fa-3x"></i>
+      <i class="fas fa-tags fa-3x size3"></i>
     </h2>
     <% @tags.each do |tag| %>
       <%= link_to posts_path(tag: tag.name) do %>
@@ -15,12 +15,13 @@
         <div class="card-body">
           <div class="row">
             <div class="col-md-2">
-              <%=  image_tag(post.image, class: "header-img", style: "background-image") %>
+              <% if post.image.present? %>
+                <%= image_tag(post.image, class: "header-img", style: "background-image") %>
+              <% end %>
             </div>
             <div class="col-md-10">
               <h5 class='card-title mb-2 text-dark'><%= post.title %></h5>
               <p class="text-secondary mb-0"><%= post.concept %></p>
-                <%# タグの部分 %>
                 <% if post.tag_list.any? %>
                   <% post.tags.each do |tag| %>
                     <%= link_to posts_path(tag: tag.name) do %>
@@ -28,7 +29,6 @@
                     <% end %>
                   <% end %>
                 <% end %>
-                <%# /タグの部分 %>
                 <%= link_to 'More Details', post_path(post), class: "btn btn-primary detail" %>
             </div>
           </div>

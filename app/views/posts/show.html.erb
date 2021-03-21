@@ -8,9 +8,10 @@
               <%= @post.concept %>
             </div>
             <div class="inner-image mb-5">
-              <%= image_tag(@post.image) %>
+              <% if @post.image.present? %>
+                <%= image_tag(@post.image) %>
+              <% end %>
             </div>
-            <%# タグ部分 %>
             <% if @post.tag_list.any? %>
               <% @post.tags.each do |tag| %>
                 <%= link_to posts_path(tag: tag.name) do %>
@@ -18,7 +19,6 @@
                 <% end %> 
               <% end %>
             <% end %>
-            <%# タグ部分 %>
             <div class="comment">
               <% if user_signed_in? %>
                 <%= form_with model: [@post, @comment], local: true do |f|%>
@@ -40,7 +40,11 @@
                 <% end %>
               </ul>
             </div>
-            <p><%= link_to "Edit", edit_post_path(@post.id), class: "btn btn-primary" %></p>
+            <% if user_signed_in? && current_user.id == @post.user_id %>
+              <%= link_to "Edit", edit_post_path(@post.id), class: "btn btn-primary" %>
+              <%= link_to "Delete", post_path(@post), class: "btn btn-danger", method: :delete %>
+            <% end %>
+            <%= link_to 'Back to top', root_path, class: "btn btn-primary" %>
         </div>
       </div>
     </div>

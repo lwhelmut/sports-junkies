@@ -53,16 +53,6 @@ ActiveRecord::Schema.define(version: 2021_03_18_093641) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
-  create_table "elements", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "element_type"
-    t.text "content"
-    t.bigint "post_id", null: false
-    t.integer "position"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["post_id"], name: "index_elements_on_post_id"
-  end
-
   create_table "messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "content"
     t.bigint "room_id"
@@ -143,7 +133,6 @@ ActiveRecord::Schema.define(version: 2021_03_18_093641) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
-  add_foreign_key "elements", "posts"
   add_foreign_key "messages", "rooms"
   add_foreign_key "messages", "users"
   add_foreign_key "posts", "users"

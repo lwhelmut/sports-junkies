@@ -63,3 +63,5 @@ gem 'acts-as-taggable-on', '~> 7.0'
 gem 'jquery-ui-rails'
 
 gem "stimulus_reflex", "~> 3.4"
+
+gem "optimism", "~> 0.4.1"
