@@ -50,6 +50,9 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
+  gem 'rspec-rails', '~> 4.0.0'
+  gem 'factory_bot_rails'
+  gem 'faker'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -61,7 +64,5 @@ gem 'mini_magick'
 gem 'image_processing', '~> 1.2'
 gem 'acts-as-taggable-on', '~> 7.0'
 gem 'jquery-ui-rails'
-
-gem "stimulus_reflex", "~> 3.4"
 
 gem "optimism", "~> 0.4.1"

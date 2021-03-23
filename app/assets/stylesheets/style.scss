@@ -120,6 +120,7 @@
 // chat-room
 
 
+
 // header(post)
 
 .btn-circle {
@@ -268,6 +269,7 @@
 
 
 
+// post(main)
 .post-card {
   .header-img {
     width: 100%;
@@ -278,6 +280,11 @@
 }
 .row {
   position: relative;
+  .card {
+    .show {
+      margin-bottom: 100px;
+    }
+  }
   .inner-image {
     pointer-events: none;
     img {
@@ -323,3 +330,5 @@
     margin-left: -30px;
   }
 }
+
+// post(main)

@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   end
   resources :rooms
   resources :messages
+  resources :users, only: :show
 end

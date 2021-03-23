@@ -1,134 +1,147 @@
-# Table Design
-
-## users table
-
-| Column          | Type    | Options     |
-| --------        | ------  | ----------- |
-| name            | string  | null: false |
-| email           | string  | null: false |
-| password        | string  | null: false |
-| favorite_sports | text    | null: false |
-| age             | integer | null: false |
-| tag             | string  | null: false |
-
-### Association
-
-- has_many :room_users
-- has_many :rooms, through: room_users
-- has_many :messages
-- has_many :tags, through: tag_users
-- has_many :tag_users
-- has_many :posts
-- has_many :comments
+# Myオリジナルアプリケーション
 
 
-## rooms table
-
-| Column | Type   | Options     |
-| ------ | ------ | ----------- |
-| name   | string | null: false |
-
-### Association
-
-- has_many   :room_users
-- has_many   :users, through: room_users
-- has_many   :messages
-- belongs_to :tag
+## アプリケーション名
+Sports Blog
 
 
-## room_users table
+## アプリケーション概要
+- このアプリケーションでできること
 
-| Column | Type       | Options                        |
-| ------ | ---------- | ------------------------------ |
-| user   | references | null: false, foreign_key: true |
-| room   | references | null: false, foreign_key: true |
-
-### Association
-
-- belongs_to :room
-- belongs_to :user
-
-
-## messages table
-
-| Column  | Type       | Options                        |
-| ------- | ---------- | ------------------------------ |
-| content | string     | null: false                    |
-| user    | references | null: false, foreign_key: true |
-| room    | references | null: false, foreign_key: true |
-
-### Association
-
-- belongs_to :room
-- belongs_to :user
+### 主な機能
+- このアプリケーションで実装した主な機能についての概要です
+#### ユーザー管理機能　
+- サインアップで名前、メールアドレス、パスワードの他に年齢、好きなスポーツ、タグを登録できます
+#### 投稿機能
+- その日やったスポーツのタイトル、画像、コンセプト、タグを登録することができます
+#### コメント機能
+- 投稿されたものにコメントすることができます
+#### タグ機能
+- 投稿する時に登録したタグをクリックするとタグに紐づいた投稿を見ることができます
 
 
-## Tags table
-
-| Column | Type       | Options                        |
-| ------ | ------     | -----------                    |
-| name   | string     | null: false                    |
-| post   | references | null: false, foreign_key: true |
-
-### Association
-
-- has_one :room
-- has_many :users, through: tag_users
-- has_many :tag_users
-- has_many :posts, through: tag_posts
-- has_many :tag_posts
+## URL
+- ※まだデプロイしていません
 
 
-## tag_users table
-
-| Column | Type       | Options                        |
-| ------ | ---------- | ------------------------------ |
-| user   | references | null: false, foreign_key: true |
-| tag    | references | null: false, foreign_key: true |
-
-### Association
-
-- belongs_to :tag
-- belongs_to :user
+## テスト用アカウント
+- Email: test2@com 
+- Password: 333333l
 
 
-## tag_posts table
-
-| Column | Type       | Options                        |
-| ------ | ---------- | ------------------------------ |
-| post   | references | null: false, foreign_key: true |
-| tag    | references | null: false, foreign_key: true |
-
-### Association
-
-- belongs_to :tag
-- belongs_to :post
-
-## Posts Table
-
-| Column  | Type       | Options                        |
-| ------- | ---------- | ------------------------------ |
-| title   | string     | null: false                    |
-| concept | text       | null: false                    |
-| user    | references | null: false, foreign_key: true |
-
-### Association
-
-- has_many :tags, through :tag_posts
-- has_many :tag_posts
-- belongs_to :user
-- has_many :comments
+## 利用方法
+- 投稿機能を使って少しでも運動のことをシェアしていきましょう。
+- チャット機能を使って仲間と合流しスポーツを通じて健康な体を目指すとともに親交をより深めていきましょう！
 
 
-## comments table
+## 目指した課題解決
+- このアプリのコンセプトとしてコミュニティーのなか（会社など）の健康を活性化させるということをミッションとしています。
+- 健康意識が高まっている世の中とはいえ、よし、痩せるために次の日から運動するぞ！と思っても、どうしても自分一人では家で運動する気分にならなかったりしますよね。
+- その中には運動はきついと思っている方も多いのでは無いでしょうか。
+- 実際にそいういう固定観念をなくすことが目的です。
+- 一人でやる気にならなかったらみんなでやりましょう、そのためのツールとしてこのアプリケーションを開発しました。
 
-| Column  | Type       | Options                        |
-| ------- | ---------- | ------------------------------ |
-| text    | string     | null: false                    |
-| post    | references | null: false, foreign_key: true |
-| user    | references | null: false, foreign_key: true |
 
-### Association
+## 洗い出した要件
 
-- belongs_to :post
-- belongs_to :user
+### 機能
+
+#### ユーザー管理機能
+
+##### 目的
+- ユーザーが、サインアップ、ログイン、ログアウトをできるようになる
+##### 詳細
+- ユーザーを新しく登録できる、登録が完了している場合ログインできる、ログアウトできる
+##### ストーリー（ユースケース）
+- 新規登録の際、名前・メールアドレス・パスワードの他に年齢、好きなスポーツ、タグを登録することができます。ログインしていない時はヘッダーにLog In, Sign Up ボタンが表示されます。ログインしている時はヘッダーにログアウトボタンが表示されます。
+
+#### 投稿機能
+
+##### 目的
+- ユーザーが活動したものを投稿できるようにするため
+##### 詳細
+- 情報を入力して投稿することができる、画像を投稿することができる、投稿したものを編集することができる
+##### ストーリー（ユースケース）
+- ログインしている状態でないと新たに投稿を作成することはできません。ヘッダーにCreate New Blog のボタンから新たに作成できます。Create New Blog ボタンを押すと投稿作成ページへ移動できます。タイトルをつけれます。自分が運動に関してしたことをConceptのところに記入し、例えば強調したい部分を太字で囲んだりと文字をデザインすることができます。画像を添付、タグもつけることができます。
+
+#### タグ機能
+
+##### 目的
+- 自分が気になるタグの投稿を絞り込めるようにするため
+##### 詳細
+- 投稿する時、ユーザーを新規登録する時にタグを登録することができる。また、タグからタグに紐づいた投稿を見ることができる
+##### ストーリー（ユースケース）
+- 表示されているタグをクリックすると、その選択したタグに紐づいた投稿を表示してくれます。
+
+#### コメント機能
+
+##### 目的
+- 投稿されたものにコメントすることができるようにするため
+##### 詳細
+- 投稿されたものにコメントを残すことができます
+##### ストーリー（ユースケース）
+- 投稿されたものの下にコメント欄があるので、そこにコメントを入力し投稿することができます。
+
+#### ルーム機能
+
+##### 目的
+- チャットできるためのルームを作成できるようにするため
+##### 詳細
+- 連絡を行う場であるチャットルームを作成することができる、ユーザーがチャットルームを決定できる、複数人でチャットをすることができる
+##### ストーリー（ユースケース）
+- トップページの右側にあるteamspeakのアイコンからルームページに飛べます。ログインしていないと表示されないようになっています。ルームページに飛んだら左上にあるRoom nameボックスに作りたいルーム名を記入し、Addボタンで追加できます。入力したルームが下に追加されたらクリックしチャットを開始することができます。
+
+#### メッセージ機能
+
+##### 目的
+- メッセージを送信することができるようにするため
+##### 詳細
+- 非同期でルームにメッセージを送信することができる
+##### ストーリー（ユースケース）
+- Type your message here と書いてあるボックスにメッセージを記入し　Add MessageボタンまたはそのままEnterキーを押しても送信できます。
+
+
+
+## 実装した機能についてのGIF（と説明）
+
+### サインアップ
+- https://gyazo.com/6f4894e3f0211f9cd378dbe09c6b8380
+- https://gyazo.com/fb8afb3792f98a51680548256e92be24 （タグを登録するときは,で区切って複数追加することができます。追加せずとも登録できます。）
+
+### ログイン
+- https://gyazo.com/40964cdd7e7cfcbd1294cbd830e6146c
+- https://gyazo.com/78653c7d0b4648bf98899bc1b00c86df
+
+### ログアウト
+- https://gyazo.com/a50318d466dae6b8b39c965d0c121f0a
+
+### 投稿詳細ページへ移動
+- https://gyazo.com/fb12bbba0f15d3be92b5ca4c4be0586c （ログインしていなくても投稿の詳細、コメントを閲覧することができます。）
+
+### 新規投稿機能
+- https://gyazo.com/edb0bf1853e1abe1b5baba50e6e4ace4
+- https://gyazo.com/4f0faf1c5e70af24608201261d5da2d0 （画像は添付してもしなくても投稿できます。タグはサインアップと同様,で区切って複数追加できます。さらにaction-text機能を使ってConceptの中で強調したいところを太字などにしてカスタマイズできます。）
+
+### タグ機能
+- https://gyazo.com/65410b30fc561c0cba520f0893521f56 （タグをクリックすると、タグに紐づいた投稿のみ絞って表示することができます。）
+
+### ルーム作成機能
+- https://gyazo.com/354ef07db94cf9c508e879b4cbbd8ee0 （トップページの右側にあるアイコンをクリックすることでルーム画面に遷移できます。ログインしていないと表示されません。）
+- https://gyazo.com/acf4dcf2ca8c9e8530db97b0ad90198d （ルーム名を追加してAddボタンをタッチすることでルームを新たに追加できます。下に追加されたら、クリックしてチャットページへ移動できます）
+
+### チャット機能
+- https://gyazo.com/3bacf2f6ff7b4ebffc563c5dfcd14051 （下のメッセージボックスにメッセージを入力し送信できます。）
+
+
+## 実装予定の機能
+- pubish機能、記事が発行されたか否か
+- チャット機能でユーザーがアクティブか否か
+
+
+## データベース設計
+- https://gyazo.com/235b2a42f2d1fbc48bafa100d4904e3b
+
+## ローカルでの動作方法
+### バージョンなど
+- ruby -v 2.6.5
+- rails -v 6.0.3.5

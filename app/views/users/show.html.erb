@@ -1,0 +1,48 @@
+<div class="container">
+  <nav class="navbar navbar-light bg-light">
+    <span class="navbar-brand mb-0 h1"><%= "#{@user.name}'s Bio"%></span>
+  </nav>
+  <div class="row justify-content-between">
+    <div class="card show">
+      <div class="card-header">
+        Info
+      </div>
+      <div class="card-body">
+        <blockquote class="blockquote mb-0">
+          <p>Age</p>
+          <footer class="blockquote-footer"><%= @user.age %></footer>
+        </blockquote>
+
+        <blockquote class="blockquote mb-0">
+          <p>Favourite Sports</p>
+          <footer class="blockquote-footer"><%= @user.favorite_sports %></footer>
+        </blockquote>
+
+        <blockquote class="blockquote mb-0">
+          <p>Registered Tags</p>
+          <% if @user.tag_list.any? %>
+            <% @user.tags.each do |tag| %>
+              <%= link_to posts_path(tag: tag.name) do %>
+                <div class="badge badge badge-info tag"><%= @user.tag.name %></div>
+              <% end %> 
+            <% end %> 
+          <% end %>
+        </blockquote>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-between">
+    <% @posts.each do |post|%>
+      <div class="col-md-6 col-lg-4">
+        <div class="card post-card">
+          <div class="header-img" style="background-image: url(<%= url_for(post.image) %>);"></div>
+            <div class="card-body d-flex flex-column">
+              <h5 class='card-title'><%= post.title %></h5>
+              <p class="card-text"><%= post.concept %></p>
+              <%= link_to "Read Post", post_path(post), class: "btn btn-primary mt-auto" %>
+            </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
