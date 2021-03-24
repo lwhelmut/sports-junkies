@@ -34,7 +34,7 @@
 </div>
 <div class="container container-m">
   <div class="row justify-content-between user-posts">
-    <% @user.posts.each do |post|%>
+    <% @posts.each do |post|%>
       <div class="col-md-6 col-lg-4">
         <div class="card post-card">
           <div class="header-img" style="background-image: url(<%= url_for(post.image) %>);"></div>
