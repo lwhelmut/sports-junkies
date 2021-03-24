@@ -270,7 +270,14 @@
 
 
 // post(main)
+.container-m {
+  margin-top: 80px;
+}
+.navbar-brand {
+  margin-left: 100px;
+}
 .post-card {
+  margin: 10px;
   .header-img {
     width: 100%;
     height: 120px;

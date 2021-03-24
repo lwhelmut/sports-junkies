@@ -1,7 +1,7 @@
-<div class="container">
-  <nav class="navbar navbar-light bg-light">
-    <span class="navbar-brand mb-0 h1"><%= "#{@user.name}'s Bio"%></span>
-  </nav>
+<nav class="navbar navbar-light bg-light">
+  <span class="navbar-brand mb-0 h1"><%= "#{@user.name}'s Bio"%></span>
+</nav>
+<div class="container container-m">
   <div class="row justify-content-between">
     <div class="card show">
       <div class="card-header">
@@ -31,8 +31,10 @@
       </div>
     </div>
   </div>
-  <div class="row justify-content-between">
-    <% @posts.each do |post|%>
+</div>
+<div class="container container-m">
+  <div class="row justify-content-between user-posts">
+    <% @user.posts.each do |post|%>
       <div class="col-md-6 col-lg-4">
         <div class="card post-card">
           <div class="header-img" style="background-image: url(<%= url_for(post.image) %>);"></div>
