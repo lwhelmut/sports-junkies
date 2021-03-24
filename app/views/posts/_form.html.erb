@@ -23,7 +23,7 @@
       <div class="form-group">
         <%= form.label :tag_list %>
         <div class="input-form">
-          <%= form.text_field :tag_list, value: @post.tag_list.join(','), class: "ui-widget-content ui-autocomplete-input", name: "post[tag_list]", id: "post_tag_list", placeholder: "You can add 10 more tags"  %>
+          <%= form.text_field :tag_list, value: @post.tag_list.join(','), data: {role: "tagsinput"}, class: "ui-widget-content ui-autocomplete-input", name: "post[tag_list]", id: "post_tag_list", placeholder: "You can add 10 more tags"  %>
         </div>
       </div>
 

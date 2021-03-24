@@ -68,5 +68,6 @@ gem 'mini_magick'
 gem 'image_processing', '~> 1.2'
 gem 'acts-as-taggable-on', '~> 7.0'
 gem 'jquery-ui-rails'
+gem 'bootstrap', '~> 5.0.0.beta1'
 
 gem "optimism", "~> 0.4.1"
