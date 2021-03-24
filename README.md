@@ -21,7 +21,8 @@ Sports Blog
 
 
 ## URL
-- ※まだデプロイしていません
+- heoroku : https://sports-blogs.herokuapp.com/
+- AWS     : ※まだデプロイ中です
 
 
 ## テスト用アカウント
