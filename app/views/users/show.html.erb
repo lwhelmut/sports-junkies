@@ -17,17 +17,6 @@
           <p>Favourite Sports</p>
           <footer class="blockquote-footer"><%= @user.favorite_sports %></footer>
         </blockquote>
-
-        <blockquote class="blockquote mb-0">
-          <p>Registered Tags</p>
-          <% if @user.tag_list.any? %>
-            <% @user.tags.each do |tag| %>
-              <%= link_to posts_path(tag: tag.name) do %>
-                <div class="badge badge badge-info tag"><%= @user.tag.name %></div>
-              <% end %> 
-            <% end %> 
-          <% end %>
-        </blockquote>
       </div>
     </div>
   </div>

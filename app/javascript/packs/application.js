@@ -23,5 +23,3 @@ import "controllers"
 
 require("trix")
 require("@rails/actiontext")
-
-import Sortable from 'sortablejs'

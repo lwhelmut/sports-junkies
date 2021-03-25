@@ -29,7 +29,7 @@
                     <% end %>
                   <% end %>
                 <% end %>
-                <%= link_to "by #{post.user.name}", "/users/#{post.user.id}", class: "user-name" %>
+                by <%= link_to "#{post.user.name}", "/users/#{post.user.id}", class: "user-name" %>
                 <%= link_to 'More Details', post_path(post), class: "btn btn-primary detail" %>
             </div>
           </div>

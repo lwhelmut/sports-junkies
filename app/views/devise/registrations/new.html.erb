@@ -55,14 +55,6 @@
             <%= f.text_field :favorite_sports%>
           </div>
         </div>
-        <div class='field'>
-          <div class='field-label'>
-            <%= f.label :tag_list %>
-          </div>
-          <div class='field-input'>
-            <%= f.text_field :tag_list, value: @user.tag_list.join(','), data: {role: "tagsinput"}, name: "user[tag_list]", id: "user_tag_list", class: "ui-widget-content ui-autocomplete-input" %>
-          </div>
-        </div>
         <div class='actions'>
           <%= f.submit "Create Account", class: 'btn'%>
         </div>
