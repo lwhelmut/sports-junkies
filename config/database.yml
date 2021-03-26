@@ -51,6 +51,5 @@ production:
   <<: *default
   database: sports_junkies_production
   username: root
-  password: 3396leoWilke
-  # <%= ENV['DATABASE_PASSWORD'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
   socket: /var/lib/mysql/mysql.sock
