@@ -71,3 +71,5 @@ gem 'jquery-ui-rails'
 gem 'bootstrap', '~> 5.0.0.beta1'
 
 gem "optimism", "~> 0.4.1"
+
+gem "aws-sdk-s3", require: false
