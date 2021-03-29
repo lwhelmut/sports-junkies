@@ -142,7 +142,7 @@ Sports Blog
 
 
 ## データベース設計
-- https://gyazo.com/235b2a42f2d1fbc48bafa100d4904e3b
+- <img width="775" alt="スクリーンショット 2021-03-29 15 49 29" src="https://user-images.githubusercontent.com/78073338/112797814-eb34a980-90a6-11eb-9cf3-4efd6da08ccb.png">
 
 ## ローカルでの動作方法
 ### バージョンなど
