@@ -1,15 +1,31 @@
 <p id="message-<%= message.id %>">
-  <div class="message mb-2 <%= 'me' if message.user.id = current_user.id %>">
-    <div class="content-container">
-      <div class="content">
-        <%= message.content %>
-      </div>
-      <div class="author">
-        <span class="activity-status user-<%= message.user.id %>-status">
-          ・
-        </span>
-        <%= message.user.name %>
+  <% if message.user.id == current_user.id %>
+    <div class="message mb-2 me">
+      <div class="content-container">
+        <div class="content">
+          <%= message.content %>
+        </div>
+        <div class="author">
+          <span class="activity-status user-<%= message.user.id %>-status">
+            ・
+          </span>
+          <%= message.user.name %>
+        </div>
       </div>
     </div>
-  </div>
+  <% else %>
+    <div class="message mb-2">
+      <div class="content-container">
+        <div class="content">
+          <%= message.content %>
+        </div>
+        <div class="author">
+          <span class="activity-status user-<%= message.user.id %>-status">
+            ・
+          </span>
+          <%= message.user.name %>
+        </div>
+      </div>
+    </div>
+  <% end %>
 </p>

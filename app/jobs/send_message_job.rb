@@ -2,16 +2,12 @@ class SendMessageJob < ApplicationJob
   queue_as :default
 
   def perform(message)
-    mine = ApplicationController.render(
-      partial: 'messages/mine', 
-      locals: {messsage: message}
-    )
+    ActionCable.server.broadcast "room_channel_#{message.room_id}", message: render_message(message)
+  end
 
-    theirs = ApplicationController.render(
-      partial: 'messages/theirs', 
-      locals: {messsage: message}
-    )
+  private
 
-    ActionCable.server.broadcast "room_channel_#{message.room_id}", mine: mine, theirs: theirs, message: message
+  def render_message(message)
+    ApplicationController.render_with_signed_in_user(message.user, partial: 'messages/message', locals: {message: message})
   end
 end

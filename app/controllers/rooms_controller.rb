@@ -13,6 +13,7 @@ class RoomsController < ApplicationController
   def show
     @rooms = Room.all
     render 'index'
+    @messages = @room.messages
   end
 
   def edit

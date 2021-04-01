@@ -1,18 +1,14 @@
 class RoomChannel < ApplicationCable::Channel
   def subscribed
-    stream_from "room_channel_#{params[:room_id]}"
+    stream_from "room_channel_#{params['room']}"
   end
 
   def unsubscribed
     # Any cleanup needed when channel is unsubscribed
   end
 
-  # def cookies
-  #   connection.send(:cookies)
-  # end
-
   def speak(data)
-    Message.create! 'room_channel', message: data['message'], user_id: current_user.id, room_id: params[:room_id]
+    Message.create! 'room_channel', message: data['message'], user_id: current_user.id, room_id: params['room']
   end
 
 end

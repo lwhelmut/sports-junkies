@@ -28,7 +28,7 @@ gem 'jbuilder', '~> 2.7'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
-gem 'redis'
+gem 'redis', '~> 4.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -67,7 +67,6 @@ gem 'pry-rails'
 gem 'mini_magick'
 gem 'image_processing', '~> 1.2'
 gem 'acts-as-taggable-on', '~> 7.0'
-gem 'jquery-ui-rails'
 gem 'bootstrap', '~> 5.0.0.beta1'
 
 gem "optimism", "~> 0.4.1"
