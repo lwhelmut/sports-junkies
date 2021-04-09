@@ -1,0 +1,11 @@
+<% if user_signed_in? %>
+  <% unless @post.like_user(current_user.id).blank? %>
+    <%= link_to post_like_path(post_id: @post.id, id: @post.likes[0].id), method: :delete, remote: true do %>
+      <i class="fas fa-thumbs-up fa-3x size4"></i>
+    <% end %>
+  <% else %>
+    <%= link_to post_likes_path(@post.id), method: :post, remote: true do %>
+      <i class="far fa-thumbs-up fa-3x size4"></i>
+    <% end %>
+  <% end %>
+<% end %>

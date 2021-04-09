@@ -12,6 +12,9 @@
                 <%= image_tag(@post.image) %>
               <% end %>
             </div>
+            <div id="likes_buttons<%= @post.id %>">
+              <%= render partial: 'likes/like', locals: { post: @post, like: @like} %>
+            </div>
             <% if @post.tag_list.any? %>
               <% @post.tags.each do |tag| %>
                 <%= link_to posts_path(tag: tag.name) do %>

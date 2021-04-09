@@ -11,6 +11,8 @@ class User < ApplicationRecord
   has_many :rooms, through: :room_users
   has_many :messages
 
+  has_many :likes
+
   acts_as_taggable
 
   with_options presence: true do
