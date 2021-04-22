@@ -22,8 +22,26 @@
   </div>
 </div>
 <div class="container container-m">
+  <b class="users-post-head"><%= "#{@user.name}'s Post"%></b>
+  <hr align="center">
   <div class="row justify-content-between user-posts">
     <% @posts.each do |post|%>
+      <div class="col-md-6 col-lg-4">
+        <div class="card post-card">
+          <div class="header-img" style="background-image: url(<%= url_for(post.image) %>);"></div>
+            <div class="card-body d-flex flex-column">
+              <h5 class='card-title'><%= post.title %></h5>
+              <p class="card-text"><%= post.concept %></p>
+              <%= link_to "Read Post", post_path(post), class: "btn btn-primary mt-auto" %>
+            </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <b class="users-post-head"><%= "#{@user.name}'s Liked Post"%></b>
+  <hr align="center">
+  <div class="row justify-content-between user-posts">
+    <% @user.liked_posts.each do |post|%>
       <div class="col-md-6 col-lg-4">
         <div class="card post-card">
           <div class="header-img" style="background-image: url(<%= url_for(post.image) %>);"></div>
