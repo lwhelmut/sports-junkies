@@ -22,9 +22,9 @@ Sports Blog
 - ユーザー同士でルームを作って集まり、チャットすることができます。
 
 
-## URL
+<!-- ## URL
 - heoroku : https://sports-blogs.herokuapp.com/
-- AWS     : ※まだデプロイ中です
+- AWS     : ※まだデプロイ中です -->
 
 
 ## テスト用アカウント
