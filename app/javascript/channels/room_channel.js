@@ -12,7 +12,6 @@ document.addEventListener('turbolinks: load', () => {
     },
 
     received: function(data) {
-      console.log(data)
       return $('#messages').append(data['message']);
     },
 
